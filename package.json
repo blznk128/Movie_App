@@ -1,0 +1,28 @@
+{
+  "name": "Movie_App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blznk128/Movie_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blznk128/Movie_App/issues"
+  },
+  "homepage": "https://github.com/blznk128/Movie_App#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "node": "^13.8.0",
+    "sequelize": "^5.21.4"
+  }
+}
