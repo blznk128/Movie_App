@@ -5,7 +5,7 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname, "../public/landing.html"))
     });
 
-    // app.get("/addEmployee", (req, res) => {
-    //     res.sendFile(path.join(__dirname, "../public/addEmployee.html"))
-    // });
+    app.get("/register", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/register.html"))
+    });
 };

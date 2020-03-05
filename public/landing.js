@@ -15,4 +15,9 @@ function searchMovie() {
         movieSummary.append(response.Plot)
         movieTitle.append(response.Title)
       });
+};
+
+function newUser() {
+  event.preventDefault();
+  window.location.href = "/register"
 }

@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+require("./routes/apiRoute")(app);
 require("./routes/htmlRoute")(app);
 
 db.sequelize.sync({ force: false}).then(() => {
