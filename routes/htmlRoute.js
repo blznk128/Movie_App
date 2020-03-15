@@ -8,4 +8,8 @@ module.exports = (app) => {
     app.get("/register", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/register.html"))
     });
+
+    app.get("/logIn", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/logIn.html"))
+    });
 };
