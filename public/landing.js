@@ -1,6 +1,8 @@
 const movieName = $("#movie")
 const movieSummary = $("#summary")
 const movieTitle = $(".card-title")
+const userLoggedIn = $("#theUser")
+
 
 function searchMovie() {
     event.preventDefault()
@@ -21,3 +23,12 @@ function newUser() {
   event.preventDefault();
   window.location.href = "/register"
 }
+
+function getUser(data) {
+  $.get("/api/dashboard", (data) => {
+    console.log(data)
+    userLoggedIn.text("hi")
+  })
+}
+  
+getUser()

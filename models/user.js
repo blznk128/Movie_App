@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         favoriteMovies: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
     });
 
     return User

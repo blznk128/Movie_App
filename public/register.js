@@ -1,5 +1,5 @@
 const user = $("#userName");
-    const userPassword = $("#passWord");
+const userPassword = $("#passWord");
 
     function registerUser() {
         event.preventDefault();
