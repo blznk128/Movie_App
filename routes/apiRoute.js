@@ -4,7 +4,8 @@ module.exports = (app) => {
     app.post("/api/registerUser", (req, res) => {
         db.User.create({
             userName: req.body.userName,
-            password: req.body.password
+            password: req.body.password,
+            favoriteMovies: req.body.favoriteMovies
         })
         .then(dbUser => {
             res.json(dbUser)
@@ -66,7 +67,7 @@ module.exports = (app) => {
             // hbsContent.title = "You are logged in"; 
             //res.sendFile(__dirname + '/public/dashboard.html');
             // res.render('landing.html', hbsContent);
-         }res.json(req.session.user.favoriteMovies)
+         }res.json(req.session.user)
         
     });
 }

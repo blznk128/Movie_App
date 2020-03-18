@@ -26,8 +26,8 @@ function newUser() {
 
 function getUser(data) {
   $.get("/api/dashboard", (data) => {
-    console.log(data)
-    userLoggedIn.text("hi")
+    console.log(data.favoriteMovies)
+    userLoggedIn.text(data.userName)
   })
 }
   
