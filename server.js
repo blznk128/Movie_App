@@ -25,17 +25,17 @@ app.use((req, res, next) => {
     next();
 });
 
-var hbsContent = {userName: '', loggedin: false, title: "You are not logged in today", body: "Hello World"}; 
+// var hbsContent = {userName: '', loggedin: false, title: "You are not logged in today", body: "Hello World"}; 
 
-// middleware function to check for logged-in users
-var sessionChecker = (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) {
+// // middleware function to check for logged-in users
+// var sessionChecker = (req, res, next) => {
+//     if (req.session.user && req.cookies.user_sid) {
 		
-        res.redirect('/api/dashboard');
-    } else {
-        next();
-    }    
-};
+//         res.redirect('/api/dashboard');
+//     } else {
+//         next();
+//     }    
+// };
 
 // app.route("/api/login")
 //     .get(sessionChecker, (req, res) => {
