@@ -66,19 +66,4 @@ module.exports = (app) => {
             res.redirect('/login');
         }
     });
-
-    // app.route("/api/logout")
-    // // .get(sessionChecker, (req, res) => {
-    // // })
-    // .get((req, res) => {
-    //     if (req.session.user && req.cookies.user_sid) {
-    //         loggedin = false; 
-            
-    //         res.clearCookie('user_sid');
-    //         console.log("did this log off?"); 
-    //         // res.redirect('/');
-    //     } else {
-    //         res.redirect('/login');
-    //     }
-    // });
 }

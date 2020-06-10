@@ -34,7 +34,7 @@ function getUser(data) {
 function goToLogOff(userId) {
   event.preventDefault();
   console.log("hi")
-  $.get("/api/logout", userId, () => {
+  $.post("/api/logout", userId, () => {
       console.log(userId)
       window.location.href = "/landing"
   })

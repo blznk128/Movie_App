@@ -26,12 +26,12 @@ function logIn(userId) {
     })
 }
 
-function goToLogOff(userId) {
-    event.preventDefault();
-    console.log("hi")
-    $.post("/api/logout", userId, () => {
-        console.log(userId)
-        window.location.href = "/landing"
-    })
+// function goToLogOff(userId) {
+//     event.preventDefault();
+//     console.log("hi")
+//     $.post("/api/logout", userId, () => {
+//         console.log(userId)
+//         window.location.href = "/landing"
+//     })
     
-}
+// }
