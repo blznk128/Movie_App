@@ -7,7 +7,6 @@ let moviesSaved = []
 
 function searchMovie() {
     event.preventDefault()
-    
     const urlSearch = "https://www.omdbapi.com/?t=" + movieName.val().trim() + "&y=&plot=short&apikey=trilogy";
     $.ajax({
         url: urlSearch,
@@ -24,7 +23,6 @@ function searchMovie() {
         
       })
 };
-
 
 function addSecret(favoriteMovies) {
   $.post("/api/saveMovie", favoriteMovies, () => {
@@ -55,8 +53,6 @@ function getUser(data) {
       addMovie(newMovie)
     })
   })
-  
-  
 }
   
 function goToLogOff(userId) {
@@ -67,8 +63,5 @@ function goToLogOff(userId) {
       window.location.href = "/landing"
   })
 }
-
-
-
 
 getUser()

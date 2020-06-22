@@ -12,7 +12,6 @@ const userMovie = $("#favoriteMovie");
         addRegistration(newRegistration)
     };
 
-
     function addRegistration(registrar) {
         $.post("/api/registerUser", registrar, () => {
             console.log(registrar)

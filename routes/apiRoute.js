@@ -35,14 +35,12 @@ module.exports = (app) => {
         var userName = req.body.userName,
             password = req.body.password;
 
-        db.User.findOne({ where: { userName: userName } }).then(function (user) {
+        db.User.findOne({ where: { userName: userName && password} }).then(function (user) {
             if (!user) {
-                console.log("not logged in");
+                console.log(user);
             }  else {
                 req.session.user = user.dataValues;
                 res.redirect('/api/dashboard');
-                console.log("logged in ", user.dataValues.userName)
-                console.log("also logged in: ", req.session.user.id)
             }
         });
     });
