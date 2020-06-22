@@ -1,34 +1,62 @@
-const movieName = $("#movie")
-const movieSummary = $("#summary")
-const movieTitle = $(".card-title")
-const userLoggedIn = $("#theUser")
-
+const movieName = $("#movie");
+const movieSummary = $("#summary");
+const movieTitle = $(".card-title");
+const userLoggedIn = $("#theUser");
+const informationMovie = $("#movie")
+let moviesSaved = []
 
 function searchMovie() {
     event.preventDefault()
+    
     const urlSearch = "https://www.omdbapi.com/?t=" + movieName.val().trim() + "&y=&plot=short&apikey=trilogy";
     $.ajax({
         url: urlSearch,
         method: "GET"
       }).then(function(response) {
         console.log(response);
+        moviesSaved = []
         let movieImage = response.Poster
         $('img').attr('src', movieImage)
         movieSummary.append(response.Plot)
         movieTitle.append(response.Title)
-      });
+        moviesSaved.push(response.Title)
+        console.log(response.Title)
+        
+      })
 };
+
+
+function addSecret(favoriteMovies) {
+  $.post("/api/saveMovie", favoriteMovies, () => {
+  })
+}
 
 function newUser() {
   event.preventDefault();
   window.location.href = "/register"
 }
 
+function addMovie(savedMovie) {
+  $.ajax({
+    method: "PUT",
+    url: "/api/saveMovie",
+    data: savedMovie
+  }).then(console.log("is this todo: ",savedMovie))
+}
+
 function getUser(data) {
   $.get("/api/dashboard", (data) => {
-    console.log(data.favoriteMovies)
     userLoggedIn.text(data.userName)
+    $("#movieSave").on("click", function() {
+      event.preventDefault()
+      let newMovie = {
+        favoriteMovies: informationMovie.val()
+    }
+      addMovie(newMovie)
+    })
   })
+  
+  
 }
   
 function goToLogOff(userId) {
@@ -38,7 +66,9 @@ function goToLogOff(userId) {
       console.log(userId)
       window.location.href = "/landing"
   })
-  
 }
+
+
+
 
 getUser()

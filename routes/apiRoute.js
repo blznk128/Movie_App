@@ -42,6 +42,7 @@ module.exports = (app) => {
                 req.session.user = user.dataValues;
                 res.redirect('/api/dashboard');
                 console.log("logged in ", user.dataValues.userName)
+                console.log("also logged in: ", req.session.user.id)
             }
         });
     });
@@ -58,12 +59,24 @@ module.exports = (app) => {
     app.post('/api/logout', (req, res) => {
         if (req.session.user && req.cookies.user_sid) {
             loggedin = false; 
-            
             res.clearCookie('user_sid');
-            // console.log("did this log off?"); 
             res.redirect('/');
         } else {
             res.redirect('/login');
         }
     });
+
+    app.put("/api/saveMovie", function(req, res) {
+        db.User.update({
+          favoriteMovies: req.body.favoriteMovies
+        }, {
+          where: {
+            id: req.session.user.id
+            
+          }
+        }).then(function(dbUser) {
+          res.json(dbUser);
+          console.log(req.body)
+        });
+      });
 }
