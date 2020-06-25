@@ -29,8 +29,8 @@ module.exports = (app) => {
     };
     
     app.route("/api/login")
-    .get(sessionChecker, (req, res) => {
-    })
+    // .get(sessionChecker, (req, res) => {
+    // })
     .post((req, res) => {
         var userName = req.body.userName,
             password = req.body.password;
@@ -46,6 +46,7 @@ module.exports = (app) => {
     });
 
     app.get('/api/dashboard', (req, res) => {
+        
         if (req.session.user && req.cookies.user_sid) {
             loggedin = true; 
             userName = req.session.user.userName;  
@@ -75,6 +76,26 @@ module.exports = (app) => {
         }).then(function(dbUser) {
           res.json(dbUser);
           console.log(req.body)
-        });
+        })
       });
+
+
+      app.get("/api/getUser/", (req, res) => {
+        db.User.findAll({})
+            .then((dbUser)=> {
+                res.json(dbUser)
+            });
+    });
+
+    app.get("/api/savedUsers/:id", function(req, res) {
+        db.User.findOne({
+          where: {
+            id: req.params.id
+          }
+        })
+          .then(function(dbUser) {
+            res.json(dbUser);
+          });
+      });
+
 }

@@ -43,7 +43,7 @@ function addMovie(savedMovie) {
 }
 
 function getUser(data) {
-  $.get("/api/dashboard", (data) => {
+  $.get("/api/dashboard", function(data) {
     userLoggedIn.text(data.userName)
     $("#movieSave").on("click", function() {
       event.preventDefault()
@@ -51,6 +51,11 @@ function getUser(data) {
         favoriteMovies: informationMovie.val()
     }
       addMovie(newMovie)
+    })
+    $("#savedMovie").on("click", function() {
+      event.preventDefault()
+      console.log("hi")
+      window.location.href = "/savedMovies"
     })
   })
 }
@@ -63,5 +68,17 @@ function goToLogOff(userId) {
       window.location.href = "/landing"
   })
 }
+
+function viewSavedMovies() {
+  event.preventDefault();
+  let currentPost = $(this)
+    .parent()
+    .parent()
+    .attr("id");
+  // window.location.href = "/savedMovies?employee_id=" + currentPost;
+  console.log(currentPost)
+}
+
+
 
 getUser()

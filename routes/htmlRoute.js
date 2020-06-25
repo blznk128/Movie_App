@@ -15,5 +15,9 @@ module.exports = (app) => {
 
     app.get("/landing", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/landing.html"))
+    });
+
+    app.get("/savedMovies", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/savedMovies.html"))
     })
 };

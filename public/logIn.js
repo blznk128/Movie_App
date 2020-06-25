@@ -1,6 +1,7 @@
 const user = $("#userName");
 const userPassword = $("#passWord");
 var hbsContent = {userName: '', loggedin: false, title: "You are not logged in today", body: "Hello World"};
+
 function goToLogin() {
     event.preventDefault();
   window.location.href = "/logIn"
