@@ -29,6 +29,17 @@ function deleteMovies(savedMovie) {
   function getMovies(id) {
     $.get("/api/dashboard", (data) => {
        console.log(data)
+       $("#deleteMovie").on("click", function() {
+        console.log(data)
+        event.preventDefault()
+        let deleteMovie = {
+          favoriteMovies: null
+      }
+        deleteMovies(deleteMovie);
+        location.reload()
+        
+        
+    })
        }).then(function(data) {
           console.log("part two id: " + data.id)
           let rowId = data.id;
