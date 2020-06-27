@@ -5,6 +5,8 @@ const userLoggedIn = $("#theUser");
 const informationMovie = $("#movie")
 let moviesSaved = []
 
+$(".dropdown-trigger").dropdown();
+
 function searchMovie() {
     event.preventDefault()
     const urlSearch = "https://www.omdbapi.com/?t=" + movieName.val().trim() + "&y=&plot=short&apikey=trilogy";
@@ -24,10 +26,10 @@ function searchMovie() {
       })
 };
 
-function addSecret(favoriteMovies) {
-  $.post("/api/saveMovie", favoriteMovies, () => {
-  })
-}
+// function addSecret(favoriteMovies) {
+//   $.post("/api/saveMovie", favoriteMovies, () => {
+//   })
+// }
 
 function newUser() {
   event.preventDefault();
