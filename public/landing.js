@@ -8,7 +8,9 @@ const showSearchButton = $("#movieSave");
 let moviesSaved = []
 
 $(".dropdown-trigger").dropdown();
-// M.toast({html: 'I am a toast!'});
+$('.sidenav').sidenav();
+  $('.collapsible').collapsible();
+
 
 function searchMovie() {
     event.preventDefault()
