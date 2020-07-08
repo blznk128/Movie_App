@@ -2,10 +2,13 @@ const movieName = $("#movie");
 const movieSummary = $("#summary");
 const movieTitle = $(".card-title");
 const userLoggedIn = $("#theUser");
-const informationMovie = $("#movie")
+const informationMovie = $("#movie");
+const showSearchedMovie = $(".card-content");
+const showSearchButton = $("#movieSave");
 let moviesSaved = []
 
 $(".dropdown-trigger").dropdown();
+// M.toast({html: 'I am a toast!'});
 
 function searchMovie() {
     event.preventDefault()
@@ -18,6 +21,8 @@ function searchMovie() {
         moviesSaved = []
         let movieImage = response.Poster
         $('img').attr('src', movieImage)
+        showSearchedMovie.show()
+        showSearchButton.show()
         movieSummary.append(response.Plot)
         movieTitle.append(response.Title)
         moviesSaved.push(response.Title)
