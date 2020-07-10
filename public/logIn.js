@@ -1,6 +1,9 @@
 const user = $("#userName");
 const userPassword = $("#passWord");
 var hbsContent = {userName: '', loggedin: false, title: "You are not logged in today", body: "Hello World"};
+$('.sidenav').sidenav();
+$('.collapsible').collapsible();
+$(".dropdown-trigger").dropdown();
 
 function goToLogin() {
     event.preventDefault();

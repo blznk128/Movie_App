@@ -1,4 +1,7 @@
 const movieList = $("#movies")
+$('.sidenav').sidenav();
+$('.collapsible').collapsible();
+$(".dropdown-trigger").dropdown();
 
 function deleteMovies(savedMovie) {
     $.ajax({
