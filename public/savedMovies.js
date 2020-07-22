@@ -8,27 +8,9 @@ function deleteMovies(savedMovie) {
       method: "PUT",
       url: "/api/saveMovie",
       data: savedMovie
-    }).then(console.log("is this todo: ",savedMovie))
+    }).then(console.log("is this deletemovie: ",savedMovie))
   }
 
-  function getSavedMovies(id) {
- $.get("/api/dashboard", (data) => {
-    console.log(data.id)
-    movieList.append(data.favoriteMovies)
-    $("#deleteMovie").on("click", function() {
-        console.log(data)
-        event.preventDefault()
-        let deleteMovie = {
-          favoriteMovies: null
-      }
-        deleteMovies(deleteMovie)
-        movieList.hide()
-        
-    })
-})
-  }
-  
-  
   function getMovies(id) {
     $.get("/api/dashboard", (data) => {
        console.log(data)
@@ -39,9 +21,7 @@ function deleteMovies(savedMovie) {
           favoriteMovies: null
       }
         deleteMovies(deleteMovie);
-        location.reload()
-        
-        
+        location.reload()   
     })
        }).then(function(data) {
           console.log("part two id: " + data.id)
@@ -52,29 +32,7 @@ function deleteMovies(savedMovie) {
     }).then(function(rowId) {
       console.log("this is rowId: " + rowId.favoriteMovies)
       movieList.append(rowId.favoriteMovies)
-    })
-        
-        
-       
-       
+    })      
    })
-     }
-
-
-    // $.get("/api/getUser", (data) => {
-    //   // movieList.text(data[0].favoriteMovies)
-    //        console.log(data)
-    //     })
-      
-      
-        function deleteEmployee(){
-          let rowId = $(this).parent("td").parent("tr").attr('id');
-          $(this).closest("tr").remove();
-          $.ajax({
-            method:"GET",
-            url:"/api/employees/" + rowId
-          })
-      };
-
-  // getSavedMovies()
+  }
   getMovies()
