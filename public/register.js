@@ -11,6 +11,7 @@ $('.sidenav').sidenav();
             password: userPassword.val(),
         }
         addRegistration(newRegistration)
+        window.location.href = "/logIn"
     };
 
     function addRegistration(registrar) {
