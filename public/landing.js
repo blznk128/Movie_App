@@ -9,8 +9,7 @@ let moviesSaved = []
 
 $(".dropdown-trigger").dropdown();
 $('.sidenav').sidenav();
-  $('.collapsible').collapsible();
-
+$('.collapsible').collapsible();
 
 function searchMovie() {
     event.preventDefault()
@@ -29,14 +28,8 @@ function searchMovie() {
         movieTitle.append(response.Title)
         moviesSaved.push(response.Title)
         console.log(response.Title)
-        
       })
 };
-
-// function addSecret(favoriteMovies) {
-//   $.post("/api/saveMovie", favoriteMovies, () => {
-//   })
-// }
 
 function newUser() {
   event.preventDefault();
@@ -49,7 +42,7 @@ function addMovie(savedMovie) {
     url: "/api/saveMovie",
     data: savedMovie
   }).then(console.log("is this todo: ",savedMovie))
-}
+};
 
 function getUser(data) {
   $.get("/api/dashboard", function(data) {
@@ -67,7 +60,7 @@ function getUser(data) {
       window.location.href = "/savedMovies"
     })
   })
-}
+};
   
 function goToLogOff(userId) {
   event.preventDefault();
@@ -76,7 +69,7 @@ function goToLogOff(userId) {
       console.log(userId)
       window.location.href = "/landing"
   })
-}
+};
 
 function viewSavedMovies() {
   event.preventDefault();
@@ -84,10 +77,7 @@ function viewSavedMovies() {
     .parent()
     .parent()
     .attr("id");
-  // window.location.href = "/savedMovies?employee_id=" + currentPost;
   console.log(currentPost)
-}
-
-
+};
 
 getUser()

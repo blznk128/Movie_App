@@ -19,22 +19,11 @@ module.exports = (app) => {
         }
         next();
     });
-    var sessionChecker = (req, res, next) => {
-        if (req.session.user && req.cookies.user_sid) {
-            
-            res.redirect('/api/dashboard');
-        } else {
-            next();
-        }    
-    };
     
     app.route("/api/login")
-    // .get(sessionChecker, (req, res) => {
-    // })
-    .post((req, res) => {
-        var userName = req.body.userName,
-            password = req.body.password;
-
+        .post((req, res) => {
+            let userName = req.body.userName,
+                password = req.body.password;
         db.User.findOne({ where: { userName: userName && password} }).then(function (user) {
             if (!user) {
                 console.log(user);
@@ -46,12 +35,12 @@ module.exports = (app) => {
     });
 
     app.get('/api/dashboard', (req, res) => {
-        
         if (req.session.user && req.cookies.user_sid) {
             loggedin = true; 
             userName = req.session.user.userName;  
             console.log("hey over here " + req.session.user.favoriteMovies); 
-         }res.json(req.session.user)
+         }
+            res.json(req.session.user)
         
     });
 
@@ -71,7 +60,6 @@ module.exports = (app) => {
         }, {
           where: {
             id: req.session.user.id
-            
           }
         }).then(function(dbUser) {
           res.json(dbUser);
@@ -79,8 +67,7 @@ module.exports = (app) => {
         })
       });
 
-
-      app.get("/api/getUser/", (req, res) => {
+    app.get("/api/getUser/", (req, res) => {
         db.User.findAll({})
             .then((dbUser)=> {
                 res.json(dbUser)
@@ -97,5 +84,4 @@ module.exports = (app) => {
             res.json(dbUser);
           });
       });
-
-}
+};
